@@ -1,0 +1,23 @@
+# Application-level federation registry.
+# This is NOT part of any graph and creates NO graph edges.
+# It maps stable IDs across independently governed graph stores.
+version: brso-federation-v0.1
+dataset_to_asset:
+  brso.dataset.party_exposure: brso.asset.fact_exposure
+element_to_columns:
+  brso.semantic.party_id:
+    - brso.column.dim_party.party_id
+  brso.semantic.party_name:
+    - brso.column.dim_party.party_name
+  brso.semantic.primary_industry:
+    - brso.column.dim_industry.industry_id
+  brso.semantic.operating_geography:
+    - brso.column.dim_country.country_id
+  brso.semantic.country:
+    - brso.column.dim_party.country_id
+  brso.semantic.party_ead:
+    - brso.column.fact_exposure.ead
+  brso.semantic.exposure_date:
+    - brso.column.fact_exposure.exposure_date
+  brso.semantic.party_ead.currency:
+    - brso.column.fact_exposure.currency

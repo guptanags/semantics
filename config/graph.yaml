@@ -1,0 +1,13 @@
+ontology:
+  version: "brso-v0.1"
+
+relationship_policy:
+  production_status: "approved"
+  allow_inferred: false
+  allow_candidate: false
+
+semantic_graph:
+  enabled: true
+
+metadata_graph:
+  enabled: true

@@ -1,0 +1,13 @@
+{
+  "project": "risk-semantic-query",
+  "version": "0.1.0",
+  "description": "CIB/Risk semantic data resolution and access layer",
+  "layers": [
+    "ontology",
+    "semantic",
+    "metadata"
+  ],
+  "llm": "Vertex AI",
+  "graph": "K\u00f9zu",
+  "interchange": "OKF Markdown bundles"
+}

@@ -1,0 +1,20 @@
+app:
+  name: risk-semantic-query
+  environment: dev
+
+llm:
+  provider: vertex_ai
+  project_id: ""
+  location: "us-central1"
+  model: "gemini-2.5-flash"
+
+graph:
+  ontology_database_path: "./data/kuzu/ontology"
+  semantic_database_path: "./data/kuzu/semantic"
+  metadata_database_path: "./data/kuzu/metadata"
+  federation_registry_path: "./config/federation.yaml"
+
+execution:
+  dry_run: true
+  max_rows: 10000
+  max_query_cost: 1000000
