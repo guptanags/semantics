@@ -1,232 +1,449 @@
-<mxfile host="app.diagrams.net" modified="2026-09-18T11:35:00.000Z" agent="ChatGPT" version="24.7.17">
-  <diagram id="semantic-sql-generation" name="Natural Language to SQL">
-    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1000" math="0" shadow="0">
+<mxfile host="app.diagrams.net"
+        modified="2026-09-18T11:35:00.000Z"
+        agent="ChatGPT"
+        version="24.7.17">
+
+  <diagram id="semantic-sql-generation"
+           name="Natural Language to Governed SQL">
+
+    <mxGraphModel dx="1600"
+                  dy="1000"
+                  grid="1"
+                  gridSize="10"
+                  guides="1"
+                  tooltips="1"
+                  connect="1"
+                  arrows="1"
+                  fold="1"
+                  page="1"
+                  pageScale="1"
+                  pageWidth="1600"
+                  pageHeight="1000"
+                  math="0"
+                  shadow="0">
+
       <root>
+
         <mxCell id="0"/>
         <mxCell id="1" parent="0"/>
 
         <!-- TITLE -->
-        <mxCell id="title" value="Semantic SQL Generation — Natural Language to Governed SQL"
+
+        <mxCell id="title"
+          value="Semantic SQL Generation — Natural Language to Governed SQL"
           style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=24;fontStyle=1;fontColor=#1F2937"
-          vertex="1" parent="1">
-          <mxGeometry x="40" y="25" width="900" height="40" as="geometry"/>
+          vertex="1"
+          parent="1">
+          <mxGeometry x="40" y="25" width="1000" height="40" as="geometry"/>
         </mxCell>
 
-        <!-- USER INPUT -->
-        <mxCell id="nl" value="Natural Language Query&lt;br&gt;&lt;b&gt;&quot;Show EAD for parties operating in Europe&quot;&lt;/b&gt;"
+
+        <!-- ========================= -->
+        <!-- INPUT / INTENT             -->
+        <!-- ========================= -->
+
+        <mxCell id="nl"
+          value="Natural Language Query&lt;br&gt;&lt;b&gt;&quot;Show EAD for parties operating in Europe&quot;&lt;/b&gt;"
           style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F1FB;strokeColor=#5B9BD5;strokeWidth=2;fontSize=15;fontStyle=1;"
-          vertex="1" parent="1">
+          vertex="1"
+          parent="1">
           <mxGeometry x="50" y="120" width="270" height="80" as="geometry"/>
         </mxCell>
 
-        <!-- LLM -->
-        <mxCell id="llm" value="Vertex AI / Gemini&lt;br&gt;&lt;b&gt;Intent Extractor&lt;/b&gt;&lt;br&gt;&lt;font size=&quot;11&quot;&gt;LLM used for language understanding&lt;/font&gt;"
+
+        <mxCell id="llm"
+          value="Vertex AI / Gemini&lt;br&gt;&lt;b&gt;Intent Extractor&lt;/b&gt;&lt;br&gt;&lt;font size=&quot;11&quot;&gt;Language understanding only&lt;/font&gt;"
           style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E8FF;strokeColor=#8B5CF6;strokeWidth=2;fontSize=14;fontStyle=1;"
-          vertex="1" parent="1">
+          vertex="1"
+          parent="1">
           <mxGeometry x="370" y="110" width="250" height="100" as="geometry"/>
         </mxCell>
 
-        <!-- QUERY IR -->
-        <mxCell id="queryir" value="Canonical Query IR&lt;br&gt;&lt;br&gt;&lt;b&gt;Subject:&lt;/b&gt; Party&lt;br&gt;&lt;b&gt;Measure:&lt;/b&gt; EAD&lt;br&gt;&lt;b&gt;Filter:&lt;/b&gt; Operating Geography = Europe"
+
+        <mxCell id="queryir"
+          value="Canonical Query IR&lt;br&gt;&lt;br&gt;&lt;b&gt;Subject:&lt;/b&gt; Party&lt;br&gt;&lt;b&gt;Measure:&lt;/b&gt; EAD&lt;br&gt;&lt;b&gt;Filter:&lt;/b&gt; Operating Geography = Europe"
           style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF4CC;strokeColor=#D6A600;strokeWidth=2;fontSize=13;"
-          vertex="1" parent="1">
+          vertex="1"
+          parent="1">
           <mxGeometry x="670" y="100" width="290" height="120" as="geometry"/>
         </mxCell>
 
-        <!-- CONCEPT RESOLUTION -->
-        <mxCell id="concept" value="Concept Resolver&lt;br&gt;&lt;font size=&quot;11&quot;&gt;Resolve business terms to canonical IDs&lt;/font&gt;"
+
+        <!-- ========================= -->
+        <!-- RESOLUTION COMPONENTS      -->
+        <!-- ========================= -->
+
+        <mxCell id="concept"
+          value="Concept Resolver&lt;br&gt;&lt;font size=&quot;11&quot;&gt;Resolve business terms to canonical IDs&lt;/font&gt;"
           style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EAF4EA;strokeColor=#70AD47;strokeWidth=2;fontSize=14;fontStyle=1;"
-          vertex="1" parent="1">
+          vertex="1"
+          parent="1">
           <mxGeometry x="1010" y="90" width="220" height="80" as="geometry"/>
         </mxCell>
 
-        <!-- MEASURE RESOLVER -->
-        <mxCell id="measure" value="Measure Resolver&lt;br&gt;&lt;font size=&quot;11&quot;&gt;Identify measure, aggregation and subject grain&lt;/font&gt;"
+
+        <mxCell id="measure"
+          value="Measure Resolver&lt;br&gt;&lt;font size=&quot;11&quot;&gt;Measure + aggregation + subject grain&lt;/font&gt;"
           style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EAF4EA;strokeColor=#70AD47;strokeWidth=2;fontSize=14;fontStyle=1;"
-          vertex="1" parent="1">
+          vertex="1"
+          parent="1">
           <mxGeometry x="1010" y="190" width="220" height="80" as="geometry"/>
         </mxCell>
 
-        <!-- ONTOLOGY GRAPH CONTAINER -->
-        <mxCell id="ontologyBox" value="ONTOLOGY GRAPH — Business Meaning"
+
+        <!-- ========================= -->
+        <!-- ONTOLOGY GRAPH             -->
+        <!-- ========================= -->
+
+        <mxCell id="ontologyBox"
+          value="ONTOLOGY GRAPH — BUSINESS MEANING"
           style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F7F7F7;strokeColor=#7F7F7F;strokeWidth=2;dashed=1;fontSize=15;fontStyle=1;verticalAlign=top;align=left;spacingTop=10;spacingLeft=10;"
-          vertex="1" parent="1">
+          vertex="1"
+          parent="1">
           <mxGeometry x="990" y="310" width="260" height="300" as="geometry"/>
         </mxCell>
 
-        <mxCell id="ontologyConcepts" value="Party&lt;br&gt;Credit Facility&lt;br&gt;Exposure&lt;br&gt;EAD&lt;br&gt;&lt;br&gt;&lt;b&gt;Business Relationships&lt;/b&gt;&lt;br&gt;Party ──HAS_FACILITY──► Facility&lt;br&gt;Facility ──HAS_EXPOSURE──► Exposure&lt;br&gt;Exposure ──MEASURED_BY──► EAD"
+
+        <mxCell id="ontologyConcepts"
+          value="Party&lt;br&gt;Credit Facility&lt;br&gt;Exposure&lt;br&gt;EAD&lt;br&gt;&lt;br&gt;&lt;b&gt;Business Relationships&lt;/b&gt;&lt;br&gt;Party ──HAS_FACILITY──► Facility&lt;br&gt;Facility ──HAS_EXPOSURE──► Exposure&lt;br&gt;Exposure ──MEASURED_BY──► EAD"
           style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#A6A6A6;fontSize=12;"
-          vertex="1" parent="1">
+          vertex="1"
+          parent="1">
           <mxGeometry x="1010" y="355" width="220" height="235" as="geometry"/>
         </mxCell>
 
-        <!-- SEMANTIC PATH RESOLVER -->
-        <mxCell id="semanticResolver" value="Semantic Path Resolver&lt;br&gt;&lt;br&gt;&lt;b&gt;Find governed logical path&lt;/b&gt;&lt;br&gt;Party → Credit Facility → Exposure → EAD&lt;br&gt;&lt;br&gt;Validate semantic relationships, measure reachability and grain"
-          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E2F0D9;strokeColor=#70AD47;strokeWidth=2;fontSize=13;fontStyle=1;"
-          vertex="1" parent="1">
-          <mxGeometry x="690" y="330" width="270" height="170" as="geometry"/>
-        </mxCell>
 
-        <!-- SEMANTIC GRAPH -->
-        <mxCell id="semanticBox" value="SEMANTIC GRAPH — Governed Logical Data"
+        <!-- ========================= -->
+        <!-- SEMANTIC GRAPH             -->
+        <!-- ========================= -->
+
+        <mxCell id="semanticBox"
+          value="SEMANTIC GRAPH — GOVERNED LOGICAL DATA"
           style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F7F7F7;strokeColor=#7F7F7F;strokeWidth=2;dashed=1;fontSize=15;fontStyle=1;verticalAlign=top;align=left;spacingTop=10;spacingLeft=10;"
-          vertex="1" parent="1">
+          vertex="1"
+          parent="1">
           <mxGeometry x="390" y="300" width="270" height="320" as="geometry"/>
         </mxCell>
 
-        <mxCell id="semanticData" value="SemanticDataElement&lt;br&gt;LogicalDataset&lt;br&gt;LogicalRelationship&lt;br&gt;MeasureDefinition&lt;br&gt;&lt;br&gt;&lt;b&gt;Logical Path&lt;/b&gt;&lt;br&gt;Party → Facility → Exposure&lt;br&gt;&lt;br&gt;&lt;b&gt;Measure&lt;/b&gt;&lt;br&gt;Party EAD = SUM(Exposure EAD)"
+
+        <mxCell id="semanticData"
+          value="SemanticDataElement&lt;br&gt;LogicalDataset&lt;br&gt;LogicalRelationship&lt;br&gt;MeasureDefinition&lt;br&gt;&lt;br&gt;&lt;b&gt;Logical Path&lt;/b&gt;&lt;br&gt;Party → Facility → Exposure&lt;br&gt;&lt;br&gt;&lt;b&gt;Measure&lt;/b&gt;&lt;br&gt;Party EAD = SUM(Exposure EAD)"
           style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#A6A6A6;fontSize=12;"
-          vertex="1" parent="1">
+          vertex="1"
+          parent="1">
           <mxGeometry x="410" y="350" width="230" height="245" as="geometry"/>
         </mxCell>
 
-        <!-- FEDERATION -->
-        <mxCell id="federation" value="FEDERATION REGISTRY&lt;br&gt;&lt;br&gt;&lt;b&gt;Map logical → physical&lt;/b&gt;&lt;br&gt;&lt;br&gt;Logical Relationship&lt;br&gt;party_facility&lt;br&gt;↓&lt;br&gt;Physical Join&lt;br&gt;party_facility&lt;br&gt;&lt;br&gt;Logical Relationship&lt;br&gt;facility_exposure&lt;br&gt;↓&lt;br&gt;Physical Join&lt;br&gt;facility_exposure"
+
+        <!-- ========================= -->
+        <!-- SEMANTIC PATH RESOLVER     -->
+        <!-- ========================= -->
+
+        <mxCell id="semanticResolver"
+          value="Semantic Path Resolver&lt;br&gt;&lt;br&gt;&lt;b&gt;Find governed logical path&lt;/b&gt;&lt;br&gt;Party → Credit Facility → Exposure → EAD&lt;br&gt;&lt;br&gt;Validate relationship reachability + grain"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E2F0D9;strokeColor=#70AD47;strokeWidth=2;fontSize=13;fontStyle=1;"
+          vertex="1"
+          parent="1">
+          <mxGeometry x="690" y="330" width="270" height="170" as="geometry"/>
+        </mxCell>
+
+
+        <!-- ========================= -->
+        <!-- FEDERATION                  -->
+        <!-- ========================= -->
+
+        <mxCell id="federation"
+          value="FEDERATION REGISTRY&lt;br&gt;&lt;br&gt;&lt;b&gt;Logical → Physical Mapping&lt;/b&gt;&lt;br&gt;&lt;br&gt;party_facility&lt;br&gt;↓&lt;br&gt;physical join&lt;br&gt;&lt;br&gt;facility_exposure&lt;br&gt;↓&lt;br&gt;physical join"
           style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FCE4D6;strokeColor=#C55A11;strokeWidth=2;fontSize=13;fontStyle=1;"
-          vertex="1" parent="1">
+          vertex="1"
+          parent="1">
           <mxGeometry x="690" y="550" width="270" height="220" as="geometry"/>
         </mxCell>
 
-        <!-- METADATA GRAPH -->
-        <mxCell id="metadataBox" value="METADATA GRAPH — Physical Implementation"
+
+        <!-- ========================= -->
+        <!-- METADATA GRAPH             -->
+        <!-- ========================= -->
+
+        <mxCell id="metadataBox"
+          value="METADATA GRAPH — PHYSICAL IMPLEMENTATION"
           style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F7F7F7;strokeColor=#7F7F7F;strokeWidth=2;dashed=1;fontSize=15;fontStyle=1;verticalAlign=top;align=left;spacingTop=10;spacingLeft=10;"
-          vertex="1" parent="1">
+          vertex="1"
+          parent="1">
           <mxGeometry x="990" y="650" width="260" height="250" as="geometry"/>
         </mxCell>
 
-        <mxCell id="metadataData" value="DIM_PARTY&lt;br&gt;│ party_id&lt;br&gt;▼&lt;br&gt;DIM_CREDIT_FACILITY&lt;br&gt;│ facility_id&lt;br&gt;▼&lt;br&gt;FACT_EXPOSURE&lt;br&gt;│ ead&lt;br&gt;&lt;br&gt;&lt;b&gt;Join metadata&lt;/b&gt;&lt;br&gt;Keys • Cardinality • Join type • Grain"
+
+        <mxCell id="metadataData"
+          value="DIM_PARTY&lt;br&gt;│ party_id&lt;br&gt;▼&lt;br&gt;DIM_CREDIT_FACILITY&lt;br&gt;│ facility_id&lt;br&gt;▼&lt;br&gt;FACT_EXPOSURE&lt;br&gt;│ ead&lt;br&gt;&lt;br&gt;&lt;b&gt;Join Metadata&lt;/b&gt;&lt;br&gt;Keys • Cardinality • Join type • Grain"
           style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#A6A6A6;fontSize=12;"
-          vertex="1" parent="1">
+          vertex="1"
+          parent="1">
           <mxGeometry x="1010" y="700" width="220" height="175" as="geometry"/>
         </mxCell>
 
-        <!-- PHYSICAL PATH RESOLVER -->
-        <mxCell id="physicalResolver" value="Physical Path / Join Planner&lt;br&gt;&lt;br&gt;&lt;b&gt;Resolve physical implementation&lt;/b&gt;&lt;br&gt;DIM_PARTY → DIM_CREDIT_FACILITY → FACT_EXPOSURE&lt;br&gt;&lt;br&gt;Validate join keys, cardinality and grain"
+
+        <!-- ========================= -->
+        <!-- PHYSICAL PATH RESOLVER     -->
+        <!-- ========================= -->
+
+        <mxCell id="physicalResolver"
+          value="Physical Path / Join Planner&lt;br&gt;&lt;br&gt;&lt;b&gt;Resolve physical implementation&lt;/b&gt;&lt;br&gt;DIM_PARTY → DIM_CREDIT_FACILITY → FACT_EXPOSURE&lt;br&gt;&lt;br&gt;Validate keys + cardinality + grain"
           style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E2F0D9;strokeColor=#70AD47;strokeWidth=2;fontSize=13;fontStyle=1;"
-          vertex="1" parent="1">
+          vertex="1"
+          parent="1">
           <mxGeometry x="690" y="800" width="270" height="150" as="geometry"/>
         </mxCell>
 
-        <!-- SQL AST -->
-        <mxCell id="sqlast" value="SQL AST / Query Plan&lt;br&gt;&lt;br&gt;FROM DIM_PARTY&lt;br&gt;JOIN DIM_CREDIT_FACILITY&lt;br&gt;JOIN FACT_EXPOSURE&lt;br&gt;WHERE Europe&lt;br&gt;GROUP BY party&lt;br&gt;SUM(ead)"
+
+        <!-- ========================= -->
+        <!-- SQL AST                    -->
+        <!-- ========================= -->
+
+        <mxCell id="sqlast"
+          value="SQL AST / Physical Query Plan&lt;br&gt;&lt;br&gt;FROM DIM_PARTY&lt;br&gt;JOIN DIM_CREDIT_FACILITY&lt;br&gt;JOIN FACT_EXPOSURE&lt;br&gt;WHERE Europe&lt;br&gt;GROUP BY party&lt;br&gt;SUM(ead)"
           style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF4CC;strokeColor=#D6A600;strokeWidth=2;fontSize=13;fontStyle=1;"
-          vertex="1" parent="1">
+          vertex="1"
+          parent="1">
           <mxGeometry x="390" y="690" width="270" height="160" as="geometry"/>
         </mxCell>
 
-        <!-- SQL GENERATOR -->
-        <mxCell id="sqlgen" value="Deterministic SQL Generator&lt;br&gt;&lt;font size=&quot;11&quot;&gt;SQL generated from governed Query Plan&lt;br&gt;—not directly from LLM&lt;/font&gt;"
+
+        <!-- ========================= -->
+        <!-- SQL GENERATOR              -->
+        <!-- ========================= -->
+
+        <mxCell id="sqlgen"
+          value="Deterministic SQL Generator&lt;br&gt;&lt;font size=&quot;11&quot;&gt;Generate SQL from governed Query Plan&lt;br&gt;No direct SQL generation by LLM&lt;/font&gt;"
           style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DDEBF7;strokeColor=#4472C4;strokeWidth=2;fontSize=14;fontStyle=1;"
-          vertex="1" parent="1">
+          vertex="1"
+          parent="1">
           <mxGeometry x="50" y="700" width="270" height="110" as="geometry"/>
         </mxCell>
 
-        <!-- SQL VALIDATOR -->
-        <mxCell id="validator" value="SQL Validator&lt;br&gt;&lt;br&gt;Authorized objects&lt;br&gt;Join correctness&lt;br&gt;Aggregation correctness&lt;br&gt;Security / governance&lt;br&gt;Cost / safety checks"
+
+        <!-- ========================= -->
+        <!-- SQL VALIDATOR              -->
+        <!-- ========================= -->
+
+        <mxCell id="validator"
+          value="SQL Validator&lt;br&gt;&lt;br&gt;Authorized objects&lt;br&gt;Join correctness&lt;br&gt;Aggregation correctness&lt;br&gt;Security / governance&lt;br&gt;Cost / safety checks"
           style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F4CCCC;strokeColor=#CC0000;strokeWidth=2;fontSize=13;fontStyle=1;"
-          vertex="1" parent="1">
+          vertex="1"
+          parent="1">
           <mxGeometry x="50" y="850" width="270" height="140" as="geometry"/>
         </mxCell>
 
-        <!-- OUTPUT SQL -->
-        <mxCell id="output" value="GENERATED SQL&lt;br&gt;&lt;br&gt;&lt;pre&gt;SELECT p.party_id, p.party_name,&lt;br&gt;       SUM(e.ead) AS bank_exposure&lt;br&gt;FROM DIM_PARTY p&lt;br&gt;JOIN DIM_CREDIT_FACILITY f&lt;br&gt;  ON p.party_id = f.party_id&lt;br&gt;JOIN FACT_EXPOSURE e&lt;br&gt;  ON f.facility_id = e.facility_id&lt;br&gt;...&lt;/pre&gt;"
+
+        <!-- ========================= -->
+        <!-- FINAL SQL                  -->
+        <!-- ========================= -->
+
+        <mxCell id="output"
+          value="GENERATED SQL&lt;br&gt;&lt;br&gt;&lt;pre&gt;SELECT p.party_id, p.party_name,&lt;br&gt;       SUM(e.ead) AS bank_exposure&lt;br&gt;FROM DIM_PARTY p&lt;br&gt;JOIN DIM_CREDIT_FACILITY f&lt;br&gt;  ON p.party_id = f.party_id&lt;br&gt;JOIN FACT_EXPOSURE e&lt;br&gt;  ON f.facility_id = e.facility_id&lt;br&gt;...&lt;/pre&gt;"
           style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EAF4EA;strokeColor=#70AD47;strokeWidth=2;fontSize=12;fontStyle=1;"
-          vertex="1" parent="1">
+          vertex="1"
+          parent="1">
           <mxGeometry x="390" y="875" width="270" height="120" as="geometry"/>
         </mxCell>
 
-        <!-- EDGES -->
-        <mxCell id="e1" edge="1" parent="1" source="nl" target="llm"
-          style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;endArrow=block;strokeWidth=2;">
+
+        <!-- ========================= -->
+        <!-- NUMBERED FLOW EDGES        -->
+        <!-- ========================= -->
+
+        <mxCell id="e1"
+          value="1. Submit query"
+          edge="1"
+          parent="1"
+          source="nl"
+          target="llm"
+          style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;endArrow=block;strokeWidth=2;labelBackgroundColor=#FFFFFF;fontSize=11;fontStyle=1;">
           <mxGeometry relative="1" as="geometry"/>
         </mxCell>
 
-        <mxCell id="e2" edge="1" parent="1" source="llm" target="queryir"
-          style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;endArrow=block;strokeWidth=2;">
+
+        <mxCell id="e2"
+          value="2. Extract intent"
+          edge="1"
+          parent="1"
+          source="llm"
+          target="queryir"
+          style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;endArrow=block;strokeWidth=2;labelBackgroundColor=#FFFFFF;fontSize=11;fontStyle=1;">
           <mxGeometry relative="1" as="geometry"/>
         </mxCell>
 
-        <mxCell id="e3" edge="1" parent="1" source="queryir" target="concept"
-          style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;endArrow=block;strokeWidth=2;">
+
+        <mxCell id="e3"
+          value="3. Resolve concepts"
+          edge="1"
+          parent="1"
+          source="queryir"
+          target="concept"
+          style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;endArrow=block;strokeWidth=2;labelBackgroundColor=#FFFFFF;fontSize=11;fontStyle=1;">
           <mxGeometry relative="1" as="geometry"/>
         </mxCell>
 
-        <mxCell id="e4" edge="1" parent="1" source="queryir" target="measure"
-          style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;endArrow=block;strokeWidth=2;">
+
+        <mxCell id="e4"
+          value="4. Resolve measure + grain"
+          edge="1"
+          parent="1"
+          source="queryir"
+          target="measure"
+          style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;endArrow=block;strokeWidth=2;labelBackgroundColor=#FFFFFF;fontSize=11;fontStyle=1;">
           <mxGeometry relative="1" as="geometry"/>
         </mxCell>
 
-        <mxCell id="e5" edge="1" parent="1" source="concept" target="ontologyConcepts"
-          style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;endArrow=block;strokeWidth=2;dashed=1;">
+
+        <mxCell id="e5"
+          value="5. Lookup business meaning"
+          edge="1"
+          parent="1"
+          source="concept"
+          target="ontologyConcepts"
+          style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;endArrow=block;strokeWidth=2;dashed=1;labelBackgroundColor=#FFFFFF;fontSize=11;fontStyle=1;">
           <mxGeometry relative="1" as="geometry"/>
         </mxCell>
 
-        <mxCell id="e6" edge="1" parent="1" source="measure" target="semanticResolver"
-          style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;endArrow=block;strokeWidth=2;">
+
+        <mxCell id="e6"
+          value="6. Resolve logical path"
+          edge="1"
+          parent="1"
+          source="measure"
+          target="semanticResolver"
+          style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;endArrow=block;strokeWidth=2;labelBackgroundColor=#FFFFFF;fontSize=11;fontStyle=1;">
           <mxGeometry relative="1" as="geometry"/>
         </mxCell>
 
-        <mxCell id="e7" edge="1" parent="1" source="semanticResolver" target="semanticData"
-          style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;endArrow=block;strokeWidth=2;dashed=1;">
+
+        <mxCell id="e7"
+          value="7. Traverse semantic graph"
+          edge="1"
+          parent="1"
+          source="semanticResolver"
+          target="semanticData"
+          style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;endArrow=block;strokeWidth=2;dashed=1;labelBackgroundColor=#FFFFFF;fontSize=11;fontStyle=1;">
           <mxGeometry relative="1" as="geometry"/>
         </mxCell>
 
-        <mxCell id="e8" edge="1" parent="1" source="semanticResolver" target="federation"
-          style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;endArrow=block;strokeWidth=2;">
+
+        <mxCell id="e8"
+          value="8. Map logical → physical"
+          edge="1"
+          parent="1"
+          source="semanticResolver"
+          target="federation"
+          style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;endArrow=block;strokeWidth=2;labelBackgroundColor=#FFFFFF;fontSize=11;fontStyle=1;">
           <mxGeometry relative="1" as="geometry"/>
         </mxCell>
 
-        <mxCell id="e9" edge="1" parent="1" source="federation" target="physicalResolver"
-          style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;endArrow=block;strokeWidth=2;">
+
+        <mxCell id="e9"
+          value="9. Resolve physical path"
+          edge="1"
+          parent="1"
+          source="federation"
+          target="physicalResolver"
+          style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;endArrow=block;strokeWidth=2;labelBackgroundColor=#FFFFFF;fontSize=11;fontStyle=1;">
           <mxGeometry relative="1" as="geometry"/>
         </mxCell>
 
-        <mxCell id="e10" edge="1" parent="1" source="physicalResolver" target="metadataData"
-          style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;endArrow=block;strokeWidth=2;dashed=1;">
+
+        <mxCell id="e10"
+          value="10. Validate physical joins"
+          edge="1"
+          parent="1"
+          source="physicalResolver"
+          target="metadataData"
+          style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;endArrow=block;strokeWidth=2;dashed=1;labelBackgroundColor=#FFFFFF;fontSize=11;fontStyle=1;">
           <mxGeometry relative="1" as="geometry"/>
         </mxCell>
 
-        <mxCell id="e11" edge="1" parent="1" source="physicalResolver" target="sqlast"
-          style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;endArrow=block;strokeWidth=2;">
+
+        <mxCell id="e11"
+          value="11. Build physical query plan"
+          edge="1"
+          parent="1"
+          source="physicalResolver"
+          target="sqlast"
+          style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;endArrow=block;strokeWidth=2;labelBackgroundColor=#FFFFFF;fontSize=11;fontStyle=1;">
           <mxGeometry relative="1" as="geometry"/>
         </mxCell>
 
-        <mxCell id="e12" edge="1" parent="1" source="sqlast" target="sqlgen"
-          style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;endArrow=block;strokeWidth=2;">
+
+        <mxCell id="e12"
+          value="12. Generate deterministic SQL"
+          edge="1"
+          parent="1"
+          source="sqlast"
+          target="sqlgen"
+          style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;endArrow=block;strokeWidth=2;labelBackgroundColor=#FFFFFF;fontSize=11;fontStyle=1;">
           <mxGeometry relative="1" as="geometry"/>
         </mxCell>
 
-        <mxCell id="e13" edge="1" parent="1" source="sqlgen" target="validator"
-          style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;endArrow=block;strokeWidth=2;">
+
+        <mxCell id="e13"
+          value="13. Validate SQL"
+          edge="1"
+          parent="1"
+          source="sqlgen"
+          target="validator"
+          style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;endArrow=block;strokeWidth=2;labelBackgroundColor=#FFFFFF;fontSize=11;fontStyle=1;">
           <mxGeometry relative="1" as="geometry"/>
         </mxCell>
 
-        <mxCell id="e14" edge="1" parent="1" source="validator" target="output"
-          style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;endArrow=block;strokeWidth=2;">
+
+        <mxCell id="e14"
+          value="14. Return governed SQL"
+          edge="1"
+          parent="1"
+          source="validator"
+          target="output"
+          style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;endArrow=block;strokeWidth=2;labelBackgroundColor=#FFFFFF;fontSize=11;fontStyle=1;">
           <mxGeometry relative="1" as="geometry"/>
         </mxCell>
 
-        <!-- Cross-layer boundary annotations -->
-        <mxCell id="boundary1" value="No physical data-model knowledge"
+
+        <!-- ========================= -->
+        <!-- BOUNDARY ANNOTATIONS       -->
+        <!-- ========================= -->
+
+        <mxCell id="boundary1"
+          value="Ontology has NO physical data-model knowledge"
           style="text;html=1;strokeColor=none;fillColor=none;fontSize=11;fontStyle=2;fontColor=#666666;align=center;"
-          vertex="1" parent="1">
+          vertex="1"
+          parent="1">
           <mxGeometry x="985" y="615" width="270" height="25" as="geometry"/>
         </mxCell>
 
-        <mxCell id="boundary2" value="No ontology/business semantics"
+
+        <mxCell id="boundary2"
+          value="Metadata has NO business semantics"
           style="text;html=1;strokeColor=none;fillColor=none;fontSize=11;fontStyle=2;fontColor=#666666;align=center;"
-          vertex="1" parent="1">
+          vertex="1"
+          parent="1">
           <mxGeometry x="985" y="910" width="270" height="25" as="geometry"/>
         </mxCell>
 
-        <!-- Legend -->
-        <mxCell id="legend" value="DESIGN PRINCIPLE&lt;br&gt;&lt;br&gt;LLM understands language.&lt;br&gt;Ontology defines meaning.&lt;br&gt;Semantic Graph defines logical data paths.&lt;br&gt;Federation maps logical → physical.&lt;br&gt;Metadata Graph defines physical joins.&lt;br&gt;Planner determines the governed path.&lt;br&gt;SQL Generator produces deterministic SQL."
+
+        <!-- ========================= -->
+        <!-- DESIGN PRINCIPLE           -->
+        <!-- ========================= -->
+
+        <mxCell id="legend"
+          value="DESIGN PRINCIPLE&lt;br&gt;&lt;br&gt;LLM understands language.&lt;br&gt;Ontology defines business meaning.&lt;br&gt;Semantic Graph defines logical data paths.&lt;br&gt;Federation maps logical → physical.&lt;br&gt;Metadata Graph defines physical joins.&lt;br&gt;Planner determines the governed path.&lt;br&gt;SQL Generator produces deterministic SQL."
           style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F7F7F7;strokeColor=#A6A6A6;fontSize=12;"
-          vertex="1" parent="1">
+          vertex="1"
+          parent="1">
           <mxGeometry x="1280" y="300" width="270" height="260" as="geometry"/>
         </mxCell>
 
       </root>
+
     </mxGraphModel>
+
   </diagram>
+
 </mxfile>
